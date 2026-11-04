@@ -16,41 +16,55 @@
 
 # Terminology
 
-The key words "MUST", "SHALL", "SHOULD", and "NOT" in this document are to be interpreted as
-described in BCP 14 [^BCP14] when, and only when, they appear in all capitals.
+The key words "MUST", "SHALL", "SHOULD", "SHOULD NOT", and "MAY" in this
+document are to be interpreted as described in BCP 14 [^BCP14] when, and
+only when, they appear in all capitals.
 
-The terms "Mainnet" and "Testnet" in this document are to be interpreted as
-defined in the Zcash protocol specification [^protocol-networks].
+The terms "Mainnet" and "Testnet" are to be interpreted as defined in the
+Zcash protocol specification [^protocol-networks].
 
-The terms "Zcash Community Grants" (or "ZCG"), "ZCG Committee", and "Deferred
-Dev Fund Lockbox" are to be interpreted as defined in ZIP 1015 [^zip-1015].
+The terms "Zcash Community Grants" (or "ZCG"), "ZCG Committee", and
+"Deferred Dev Fund Lockbox" are to be interpreted as defined in ZIP 1015
+[^zip-1015]; "Protocol-defined Ecosystem Funding" and "Coinholder-Controlled
+Fund" as defined in ZIP 1016 [^zip-1016].
 
-The terms "Protocol-defined Ecosystem Funding" and "Coinholder-Controlled Fund"
-are to be interpreted as defined in ZIP 1016 [^zip-1016].
+"ZEC" refers to the native currency of Zcash on Mainnet.
 
-“ZEC” refers to the native currency of Zcash on Mainnet.
+"Adoption" means an increase in the number of natural persons who hold ZEC
+directly or transact directly in ZEC on the Zcash network.
 
-A "ZAP Grant Recipient" refers to a grantee that has received ZEC directly
-disbursed through the ZAP assessment process.
+A "stakeholder" is a party whose routine economic activity depends on the
+continued operation of the Zcash network.
 
-An "end-recipient" refers to a human that receives ZEC.
+A "disbursement chain" is the sequence of ZEC transfers from a ZAP grant to
+its "grant recipient", through zero or more "intermediary recipients", to
+one or more "end recipients" (natural persons).
 
-An "intermediary-recipient" refers to an entity who receives ZEC
-from a `grant-recipient` or another, earlier `intermediary-recipient`.
+A "computational attack" targets consensus; its cost is denominated in
+hashrate, hardware, or energy. A "political attack" targets the network's
+ability to be used; its cost is denominated in legislative, regulatory,
+legal, reputational, or market-access capital. Examples of the latter:
+delisting, deplatforming of developers or infrastructure, hostile
+legislation, enforcement action against intermediaries, reputational
+campaigns.
 
 
 # Abstract
 
-Reaffirm the portion of Protocol-defined Ecosystem Funding allocated to
-Zcash Community Grants (ZCG), and focus on its original goal described in
-ZIP 1015 [^zip-1015-zcg] — to accelerate Zcash adoption as broadly as
-possible. To better reflect that focus and to clarify the original intent
-of ZIP 1015, this portion of funds will be called the "Zcash Adoption Pool".
+The portion of Protocol-defined Ecosystem Funding allocated to ZCG is
+reaffirmed and bound to its stated objective in ZIP 1015 [^zip-1015-zcg]:
+increasing Zcash adoption as broadly as possible. The pool is renamed the
+"Zcash Adoption Pool" and a minimum assessment criterion is specified for
+grants disbursed from it.
+
+Adoption is hashrate against political attack.
 
 
 # Motivation
 
-As specified in ZIP 1015:
+## Mandate
+
+ZIP 1015 specifies:
 
 > The stream allocated to Zcash Community Grants (ZCG) is intended to fund
 > independent teams entering the Zcash ecosystem, to perform major ongoing
@@ -61,189 +75,152 @@ As specified in ZIP 1015:
 > adoption of Zcash, including community programs, dedicated resources, and other
 > projects of varying sizes.
 
-There is no shortage of projects that fulfil these criteria and that are in
-desperate need of funding.
+Capital requirements of projects satisfying these criteria exceed
+available funding.
 
-Moreover, increasing the diversity in human terms of the social fabric comprising
-the end recipients of adoption efforts further secures the Zcash network against
-social and cultural attacks; when more varied and different people use and rely on
-Zcash for their meaningful daily economic activity, fewer social groups will have
-intrinsic motivations to see the network destroyed or degraded.
+## Threat model
 
-From a security perspective, as a Proof-of-Work chain, 80% of block rewards are
-currently spent on securing the network against computational attacks by computers.
-The Zcash Adoption Pool should be explicitly recognized as protecting the chain
-from social and political attacks made by people.
+A privacy-preserving payment network faces computational and political
+attacks. The historical record of privacy technologies shows political
+attacks to be the more frequent and the more effective. Of the Zcash block
+subsidy, 80% is allocated against computational attack via the miner
+reward; the `FS_FPF_ZCG_H3` stream, 8%, is the only allocation that can be
+directed against political attack. This ZIP does not resize the stream; it
+records the gap and designates the stream's purpose so that later proposals
+can address it.
 
-In simpler terms: more adoption means more security. This phenomenon could be
-referred to as "social security." To reap the benefits of social security, Zcash
-must become a dual-use technology in the same way the Internet itself is dual-use
-technology; by being used for both critical and mundane economic activity to such
-a degree and by all imaginable parties during times of both conflict and calm.
-The faster this happens, the earlier the network and the chain is protected from
-future attacks by anyone who has a social or political reason to do it any harm.
+The political adversary is plural and need not be hostile in intent.
+Regulators act to retain control over settlement, payment incumbents to
+preserve margin, competing networks to acquire share, legislators on the
+preferences of the most visible constituency. Each will act against the
+network whenever doing so is cheap relative to the benefit. The network's
+objective is therefore not persuasion but alteration of the adversary's
+cost function.
 
-By way of analogy, Zcash should not aim to be merely a cryptocurrency.
-It should aim to be "Signal Private Messenger, but for money."
+## Cost model
 
-Increasing the rate of ZEC adoption requires increasing the number of humans who
-transact in ZEC by receiving ZEC and then sending ZEC onwards so that another
-recipient receives ZEC, too. This circular usage increases the velocity of ZEC
-as a currency.
+An adversary is deterred when the cost of its aim exceeds the benefit. For
+a political attack, the cost is that of removing enough stakeholder
+dependencies that the network can no longer be used for the adversary's
+purpose; it depends on how many dependencies must be removed and on what
+each costs to remove.
 
-The most motivated and committed Zcash ecosystem participants are those who
-have a clear and present need for financial privacy, thus shielded ZEC. The
-more parties in the disbursement chain originating at ZAP-approved grants needing
-privacy, the better for the faster growth of the network effect from the initial
-grant recipients.
+The number is small when stakeholders are concentrated in one exchange,
+jurisdiction, developer organization, or sector: a single point at which
+effort can be applied at bounded cost. It grows with the count of
+jurisdictions, sectors, and political alignments across which stakeholders
+are distributed, because no single removal then suffices.
 
-The disbursement chain therefore looks like this:
+The cost per dependency is highest for stakeholders for whom shielded
+settlement is an operational requirement rather than a preference, and who
+are outside the adversary's reach; such stakeholders contest their own
+removal with their own resources. It is near zero for parties with no
+economic dependency on the network, whatever their stated preferences.
+Adoption converts the second kind of party into the first, most cheaply
+before the adversary has chosen its time and lever.
 
-    ZAP -> grant recipient -> optionally, intermediate recipient(s) -> end-recipient(s)
+## Assessment
 
-The longer this chain of unbroken ZEC to ZEC transactions between individual humans
-can reasonably be expected to be, the more benefit in terms of adoption a given grant-recipient
-could be expected to provide to the Zcash ecosystem in terms of transaction count.
+A grant whose proceeds stop at the grant recipient adds at most one
+stakeholder; proceeds transferred onward in ZEC add one at each hop:
 
-Importantly, the important adoption metric is not just "transactions," which may include
-ZEC -> BTC swaps, but rather increasing the expected count of shielded ZEC deposits/receives
-(BTC -> ZEC, or, and ideally, shielded ZEC -> shielded ZEC). For this reason, assessments
-of efficacy for adoption rate SHOULD prioritize receipt metrics over spend metrics,
-coin-amount holding, or just "transaction" counts.
+    ZAP -> grant recipient -> [intermediary recipient(s)] -> end recipient(s)
 
-This criterion SHOULD NOT be interpreted to require evidence that is
-not realistically available, or the collection of which could interfere
-with the effectiveness of adoption or the privacy of recipients.
-Collection of information from or relating to intermediate- and/or end-recipients
-MUST only be performed as necessary to assess the effectiveness
-of the grant, appropriately anonymized for that purpose (for example
-by only storing overall statistics), and only with informed consent
-of the participants.
+A grant's expected contribution is therefore proportional to the expected
+number of distinct parties in its disbursement chain. Assessment SHOULD
+weight the expected fan-out of the chain and the proportion of recipients
+for whom shielded ZEC is an operational requirement, on the evidence in the
+application.
+
+The metric is distinct shielded receives, not transaction count. Outflows
+(for example ZEC-to-BTC swaps) inflate transaction count while terminating
+the chain and removing a stakeholder. Assessment SHOULD therefore rank
+receipt metrics (external-asset-to-shielded-ZEC, and preferably
+shielded-ZEC-to-shielded-ZEC) above spend metrics, balance held, or
+undifferentiated transaction count.
+
+Measurement costs adoption. This criterion SHOULD NOT be read to require
+evidence that is not realistically obtainable or whose collection would
+reduce adoption or compromise recipient privacy. Collection of information
+on intermediary or end recipients MUST be limited to what is necessary to
+assess grant effectiveness, MUST be aggregated or otherwise anonymized (for
+example by retaining only summary statistics), and MUST be performed only
+with the informed consent of the parties concerned.
 
 ## Background
 
-Throughout the history of the Zcash project, there have been periodic calls to
-abandon support for independent teams entering the Zcash ecosystem. This has
-presented itself in a variety of forms with numerous arguments. At no point in
-Zcash's history, however, has there ever been a lack of use cases for programmes
-and initiatives that utilize shielded ZEC.
+Proposals have periodically been made to withdraw funding from independent
+teams entering the Zcash ecosystem. The most recent rest on a reading of
+"development" restricted to protocol engineering, which is inconsistent
+with the text of ZIP 1015 quoted above and with its documented intent,
+which ZIP 1016 did not alter.
 
-Most recently, calls for the abolition of the ZCG have made absurd arguments,
-including that there is more money in the Zcash Community Grants portion of the
-"dev" fund than is required for "development". This argument presupposes that
-"development" should be limited to technical protocol development, which is a
-clear misinterpretation of both the letter of ZIP 1015 (as quoted above), and
-its original intent. That intent was not changed by ZIP 1016. Notably, these
-proposals have not stipulated any change to the Coinholder-Controlled Fund —
-which in practice would result in a substantial shift of power toward large
-holders.
+Under the model above, concentrating allocation authority in any single
+class of participant narrows the dependency graph and reduces the number of
+dependencies an adversary must remove; this holds for large holders and for
+the grant committee alike. Breadth of allocation is a security property,
+not a distributional preference. ZEC holders are also the principal
+beneficiaries of adoption: velocity and breadth of distribution are the
+inputs to liquidity, and liquidity is what holders are exposed to.
+Proposals that treat holder and adoption interests as opposed are evaluated
+against the model, not against their proposers.
 
-Another such argument is that development work can be funded via other means,
-such as private equity, and therefore "should" be funded by private equity. The
-authors of this ZIP do not object to funding from private equity. Rather, this
-ZIP reaffirms the utility of funding programmes that private equity has
-evidently *not* funded, and for which no other reliable source of funding
-currently exists.
-
-There are many programmes that may apply for ZCG grants whose source for funds
-is at risk, but for whom support will undeniably increase the adoption rate of
-Zcash. That is precisely what the "dev" fund was designed to fund.
-
-To clarify this in literal terms, this ZIP therefore renames the pool of funds
-and the grant programme funded via the `FS_FPF_ZCG_H3` slice of Protocol-defined
-Ecosystem Funding to explicitly include the word "adoption", in order to avoid
-further misinterpretation or the possibility of future misappropriation of the
-funds previously allocated for purposes of broader Zcash and ZEC adoption.
+A separate argument holds that development can be funded by private
+capital and therefore should be. Capital with an external principal carries
+an external exit condition; the funding stream has none. This ZIP addresses
+the programmes private capital has not funded. The two sources are
+complementary.
 
 
 # Requirements
 
 All requirements of ZIP 1015 continue to apply; in particular:
 
-* There is a well-defined, publically agreed, process for evaluation and
-  community feedback on grant proposals.
+* There is a well-defined, publicly agreed process for evaluation of, and
+  community feedback on, grant proposals.
 * Any use of Deferred Dev Fund Lockbox funds is consistent with the purpose
-  specified in [^zip-1015-lockbox] of "funding grants to ecosystem participants".
+  specified in [^zip-1015-lockbox] of "funding grants to ecosystem
+  participants".
 
-In addition:
-
-* Funds disbursed through the Zcash Adoption Pool are to be further disbursed for
-  the explicit purpose of increasing the number of human individuals who have
-  direct holdings in ZEC or who directly transact in ZEC on the Zcash network.
-  The purpose of this is to further broaden the holding of ZEC and increase the
-  velocity of its use as a currency. This is what *adoption* means.
+In addition, funds disbursed through the Zcash Adoption Pool are to be
+further disbursed for the explicit purpose of adoption as defined above.
 
 
 # Non-requirements
 
-* Pleasing everyone.
+* Unanimity among stakeholders.
+* Per-recipient auditability beyond aggregate statistics.
+* Any change to the amount or duration of the `FS_FPF_ZCG_H3` stream.
+* Enumeration of recipient categories. The criterion is defined by
+  mechanism, not by identity of recipient.
 
 
 # Specification
 
-For avoidance of doubt, the `FS_FPF_ZCG_H3` funding stream SHALL continue at its
-existing value and for the duration specified in ZIP 214 Revision 3 [^zip-0214].
-This applies to Mainnet and Testnet.
+For avoidance of doubt, the `FS_FPF_ZCG_H3` funding stream SHALL continue
+at its existing value and for the duration specified in ZIP 214 Revision 3
+[^zip-0214], on Mainnet and Testnet.
 
-The pool of funds associated with this stream SHALL be renamed to
-"Zcash Adoption Pool" ("ZAP"), and the grant programme by which it is disbursed
-to "Zcash Adoption Pool Grants" ("ZAP Grants"). Assets associated with Zcash
-Community Grants (past, present, or future) therefore become assets associated
-with the Zcash Adoption Pool; requirements on their administration specified in
-ZIPs 1015 and 1016 [^zip-1015] [^zip-1016] are unchanged. The ZCG Committee SHALL
-be referred to as the ZAP Committee.
+The pool of funds associated with this stream SHALL be renamed "Zcash
+Adoption Pool" ("ZAP"), the grant programme by which it is disbursed "Zcash
+Adoption Pool Grants" ("ZAP Grants"), and the ZCG Committee the "ZAP
+Committee". Assets associated with ZCG (past, present, or future) become
+assets of the Zcash Adoption Pool; requirements on their administration in
+ZIPs 1015 and 1016 [^zip-1015] [^zip-1016] are unchanged.
 
-The ZAP Grant assessment process MUST obtain reasonable confidence, on the evidence
-in the application, that funds disbursed through Zcash Adoption Pool Grants will
-be further disbursed for the explicit purpose of increasing the number of human
-individuals who have direct holdings in ZEC or who directly transact in ZEC on the
-Zcash network. The purpose of this is to further broaden the holding of ZEC and
-increase the velocity of its use as a currency.
+The ZAP Grant assessment process MUST establish reasonable confidence, on
+the evidence in the application, that funds disbursed will be further
+disbursed for the explicit purpose of adoption as defined above.
 
-## Examples
-
-Examples of end-recipients who might receive ZEC as a result of a shielded ZEC
-spend from an intermediary-recipient or a grant-recipient that has themselves
-received ZEC under this programme include:
-
-* sex workers who are debanked or require electronic payment means otherwise
-  unavailable to them, and their clients that require payment discretion;
-* civil society organizations who struggle to maintain funding;
-* privacy projects and contributors in need of legal defence;
-* technical development projects that would similarly struggle to
-  receive funding from private investments (a past example would be Arti, an
-  implementation of Tor in Rust);
-* people protesting surveillance or restrictions on their speech, movement, and
-  freedom of association;
-* abortion funds;
-* people in need of humanitarian aid and disaster relief, e.g. across borders;
-* communities threatened by genocide or forced displacement;
-* debanked individuals;
-* remittance recipients;
-* victims of abuse;
-* homeless people;
-* trans people attempting to access hormones;
-* refugees;
-* people unable to obtain food or medical care due to discrimination;
-* people in need of education in underfunded nations;
-* publishers catering to underserved groups or to political views opposing
-  discrimination;
-* projects developing accessibility features, or localization to minority
-  languages;
-* small businesses choked by excessive payment processing fees;
-* people and businesses unable to access the financial system due to payment
-  processor discrimination and censorship.
-
-Some of these examples are intentionally provocative. All can be funded
-entirely legally in most jurisdictions. They are presented here to highlight
-the requirement that Zcash remain **for everyone**.
+The ZAP Committee MAY publish non-normative assessment guidance, including
+on recipient categories expected to contribute most to adoption. Such
+guidance is not part of this ZIP.
 
 
 # Acknowledgements
 
-The authors would like to thank the attendees of the Zcon7 conference for
-discussions leading to this proposal, and the organizers of the conference
-for the space to discuss it in person.
+The authors thank the attendees of the Zcon7 conference for the discussions
+leading to this proposal, and the organizers for the venue.
 
 
 # References
